@@ -1,1 +1,8 @@
-﻿  TaniyuPlanet.vcxproj -> C:\DxLib\TaniyuPlanet\Debug\TaniyuPlanet.exe
+﻿  PlanetSource.cpp
+c:\dxlib\taniyuplanet\planetsource.cpp(82): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\dxlib\taniyuplanet\planetsource.cpp(90): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\dxlib\taniyuplanet\planetsource.cpp(186): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\dxlib\taniyuplanet\planetsource.cpp(187): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\dxlib\taniyuplanet\planetsource.cpp(192): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\dxlib\taniyuplanet\planetsource.cpp(193): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+  TaniyuPlanet.vcxproj -> C:\DxLib\TaniyuPlanet\Debug\TaniyuPlanet.exe
