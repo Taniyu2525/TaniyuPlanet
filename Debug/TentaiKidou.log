@@ -1,0 +1,8 @@
+﻿  Tentai.cpp
+c:\users\下井谷優太\documents\git\taniyuplanet\tentai.cpp(82): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\下井谷優太\documents\git\taniyuplanet\tentai.cpp(90): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\下井谷優太\documents\git\taniyuplanet\tentai.cpp(186): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\下井谷優太\documents\git\taniyuplanet\tentai.cpp(187): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\下井谷優太\documents\git\taniyuplanet\tentai.cpp(192): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+c:\users\下井谷優太\documents\git\taniyuplanet\tentai.cpp(193): warning C4244: '引数': 'double' から 'int' への変換です。データが失われる可能性があります。
+  TentaiKidou.vcxproj -> C:\Users\下井谷優太\Documents\Git\TaniyuPlanet\Debug\TentaiKidou.exe
