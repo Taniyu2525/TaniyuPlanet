@@ -18,3 +18,9 @@ ikiru
 **マジ卍**
 
 ちなみにこのReadmeにはこのリポジトリの説明を書くのが本来の使い方です。
+
+## TaniyuPlanetTest
+
+改変テスト改変テスト
+
+圧倒的PlanetProgramを公開
