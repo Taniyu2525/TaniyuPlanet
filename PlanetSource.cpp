@@ -2,6 +2,7 @@
 #include<stdio.h>
 #define _USE_MATH_DEFINES//M_PI用
 #include<math.h>
+
 #define e 0.0934//軌道離心率(火星)
 #define ee 0.01671022//軌道離心率(地球)
 #define T 687//公転周期(火星)
@@ -102,6 +103,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return -1;
 	}
 	SetDrawScreen(DX_SCREEN_BACK);//裏画面処理
+
 	int color = GetColor(255, 255, 255);//文字色(白)
 	int colortwo = GetColor(0, 0, 0);//文字色(黒)
 	double aaa;//n年後まで計算用
@@ -116,11 +118,18 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	double mxxx, myyy;//三次元での座標(火星)
 	double exx, eyy;//二次元での座標(地球)
 	double exxx, eyyy;//三次元での座標(地球)
+	double mx[10000];//x座標代入用(火星)
+	double my[10000];//y座標代入用(火星)
+	double ex[10000];//x座標代入用(地球)
+	double ey[10000];//y座標代入用(地球)
+	int hoge = 0;//元に戻す用
+	int kaisu=0;//各要素に座標入れる用
 
 	//Handleに画像を渡す
 	Handle = LoadGraph("画像/mars.jpg");//火星
 	Handle1 = LoadGraph("画像/ontheearth.jpg");//猫
 	Handle2 = LoadGraph("画像/sun.png");//太陽
+
 	//表示用変数julianにユリウス日入れる
 	julian = getJulian(year, month, day);
 
@@ -147,6 +156,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			DrawFormatString(0, 40, color, "日:%d", day);
 			//ユリウス日表示
 			DrawFormatString(0, 60, color, "ユリウス日:%lf", julian);
+
 			//ニュートン法
 			//火星ver
 			while (1) {
@@ -181,21 +191,31 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			DrawFormatString(0, 160, color, "x: %f", exxx);
 			DrawFormatString(0, 180, color, "y: %f", eyyy);
 
+			//点描画↓
+			//要素に座標を代入
+			mx[kaisu] = mxxx;
+			my[kaisu] = myyy;
+			ex[kaisu] = exxx;
+			ey[kaisu] = eyyy;
+			//一旦預ける
+			hoge = kaisu;
+			//軌道描画
+			for (kaisu = 0; kaisu < hoge + 1; kaisu++) {
+				DrawPixel(400 + (120 * mx[kaisu]), 250 - (120 * my[kaisu]), color);
+				DrawPixel(400 + (120 * ex[kaisu]), 250 - (120 * ey[kaisu]), color);
+			}
+			//kaisuを元の値にかえす
+			kaisu = hoge;
+
 			//火星軌道描画
 			DrawRotaGraph(400, 250, 0.3, 0.0, Handle2, TRUE);
-			DrawRotaGraph(400 + (100 * mxxx), 250 - (100 * myyy), 0.3, 0.0, Handle, TRUE);
-			DrawRotaGraph(400 + (100 * exxx), 250 - (100 * eyyy), 0.3, 0.0, Handle1, TRUE);
-
-
-
-			//点
-			DrawPixel(400 + (50 * mxxx), 250 - (50 * myyy), color);
-			DrawPixel(400 + (50 * exxx), 250 - (50 * eyyy), color);
+			DrawRotaGraph(400 + (120 * mxxx), 250 - (120 * myyy), 0.3, 0.0, Handle, FALSE);
+			DrawRotaGraph(400 + (120 * exxx), 250 - (120 * eyyy), 0.3, 0.0, Handle1, FALSE);
 
 			//ユリウス日+1
 			julian = julian + 1;
 			//五年経つと終わり
-			if (julian == (aaa + 1825)) {
+			if (julian == (aaa + 1827)) {
 				break;
 			}
 			//日付更新↓
@@ -229,6 +249,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			day = day + 1;
 			//再度60分の1秒待つため
 			count = 0;
+			//要素代入のため+1
+			kaisu = kaisu + 1;
 		}
 	}
 	WaitKey();//キー入力があるまで表示
