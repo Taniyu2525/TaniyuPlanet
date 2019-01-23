@@ -98,7 +98,7 @@ double fnge(double u) {
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdshow)
 {
 	SetGraphMode(640, 480, 32);
-	ChangeWindowMode(FALSE);//windowsサイズ設定
+	ChangeWindowMode(TRUE);//windowsサイズ設定
 	if (DxLib_Init() == -1) {//初期化設定
 		return -1;
 	}
@@ -109,7 +109,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	double aaa;//n年後まで計算用
 	double u, un, julian;//u,unは計算用、julianはユリウス日表示用
 	double uu, unn;
-	int year = 2013, month = 7, day = 31;//年月日
+	int year = 1988, month = 12, day = 30;//年月日
 	int count = 0;//60分の1秒待機用
 	int Handle;//画像表示用
 	int Handle1;//地球
@@ -118,10 +118,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	double mxxx, myyy;//三次元での座標(火星)
 	double exx, eyy;//二次元での座標(地球)
 	double exxx, eyyy;//三次元での座標(地球)
-	double mx[10000];//x座標代入用(火星)
-	double my[10000];//y座標代入用(火星)
-	double ex[10000];//x座標代入用(地球)
-	double ey[10000];//y座標代入用(地球)
+	double mx[20000];//x座標代入用(火星)
+	double my[20000];//y座標代入用(火星)
+	double ex[20000];//x座標代入用(地球)
+	double ey[20000];//y座標代入用(地球)
 	int hoge = 0;//元に戻す用
 	int kaisu=0;//各要素に座標入れる用
 
@@ -207,7 +207,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			//kaisuを元の値にかえす
 			kaisu = hoge;
 
-			//火星軌道描画
+			//火星と地球の軌道描画
 			DrawRotaGraph(400, 250, 0.3, 0.0, Handle2, TRUE);
 			DrawRotaGraph(400 + (120 * mxxx), 250 - (120 * myyy), 0.3, 0.0, Handle, FALSE);
 			DrawRotaGraph(400 + (120 * exxx), 250 - (120 * eyyy), 0.3, 0.0, Handle1, FALSE);
@@ -215,7 +215,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			//ユリウス日+1
 			julian = julian + 1;
 			//五年経つと終わり
-			if (julian == (aaa + 1827)) {
+			if (julian == (aaa + 10800)) {
 				break;
 			}
 			//日付更新↓
